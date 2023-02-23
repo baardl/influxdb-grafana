@@ -33,11 +33,11 @@ Setup of grafana and Influx
    ./docker/start.sh
    ```
 7. Add Grafana datasource at http://localhost:3000/datasources/
-   Select InfluxDb
-   Url: http://influxdb:8086
-   Header: Authorization: Token <token from step 4>
-   Database: telegraf
-   Save and Test
+   - Select InfluxDb
+   - Url: http://influxdb:8086
+   - Header: Authorization: Token <token from step 4>
+   - Database: telegraf
+   - Push "Save and Test"
    
 
 ## Background material
