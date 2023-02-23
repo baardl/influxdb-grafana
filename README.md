@@ -16,6 +16,7 @@ docker stop influxdb
 
 ## Influx 2.x
 https://jet.dev/blog/secure-influxdb-setup-with-docker/I
+https://docs.influxdata.com/influxdb/v2.6/tools/influx-cli/?t=Linux - install influx cli 2.x
 
 ## Influx 1.x
 Based on https://towardsdatascience.com/get-system-metrics-for-5-min-with-docker-telegraf-influxdb-and-grafana-97cfd957f0ac

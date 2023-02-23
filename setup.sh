@@ -22,4 +22,6 @@ docker run -d -p 8086:8086 \
   -v influxdb-config-volume:/etc/influxdb \
   influxdb:2.6
 
+  `influx auth create -t mytoken --host http://localhost:8086 --org myorg --json  --description grafana --all-access`
+
 
