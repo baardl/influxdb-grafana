@@ -11,8 +11,8 @@ services:
     volumes:
       - grafana-volume:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=$GRAFANA_ADMIN_USER
+      - GF_SECURITY_ADMIN_PASSWORD=$GRAFANA_ADMIN_PASSWORD
   influxdb:
     image: influxdb:2.6
     container_name: influxdb
@@ -26,11 +26,11 @@ services:
       - influxdb-config-volume:/etc/influxdb
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_USERNAME=myusername
-      - DOCKER_INFLUXDB_INIT_PASSWORD=passwordpasswordpassword
-      - DOCKER_INFLUXDB_INIT_ORG=myorg
-      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+      - DOCKER_INFLUXDB_INIT_USERNAME=$INFLUXDB_ADMIN_USERNAME
+      - DOCKER_INFLUXDB_INIT_PASSWORD=$INFLUXDB_ADMIN_PASSWORD
+      - DOCKER_INFLUXDB_INIT_ORG=$INFLUXDB_ORG
+      - DOCKER_INFLUXDB_INIT_BUCKET=$INFLUXDB_BUCKET
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=$INFLUXDB_ADMIN_TOKEN
 networks:
   monitoring:
 volumes:

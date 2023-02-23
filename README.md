@@ -2,15 +2,26 @@
 Setup of grafana and Influx
 
 ## Getting started
-0. TODO create required credentials - now in docker-compose-setup.yml
+0. Create required credentials 
+   ``` 
+   cp template.env .env
+   ```
+   Update credentials, organization and bucket
 1. Start setup of grafana and influxdb
    ```
-    cp docker-compose-setup.md docker-compose.yml
+    cp docker-compose-setup.yml docker-compose.yml
     docker-compose up -d
    ```
 2. Verify InfluxDb login on http://localhost:8086 
 3. Verify Grafana login on http://localhost:3000, save the new admin password for later.
-4. `docker exec -it influxdb influx auth create -t mytoken --host http://localhost:8086 --org myorg --json  --description grafana --all-access`
+4. Create token for Grafana to access InfluxDb 
+  ```
+   source .env &&\
+   docker exec -it \
+     -e ADMIN_TOKEN=$INFLUXDB_ADMIN_TOKEN \
+     -e INFLUXDB_ORG=$INFLUXDB_ORG \
+     influxdb influx auth create -t $INFLUXDB_ADMIN_TOKEN --host http://localhost:8086 --org $INFLUXDB_ORG --json  --description grafana --all-access
+   ```
    Copy the token from the Json response, and save for later.
 5. Switch grafana and influxdb to production mode
    ```
